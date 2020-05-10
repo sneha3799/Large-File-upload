@@ -29,7 +29,7 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity {
 
     private Button button;
-
+    private Button button2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         button = (Button) findViewById(R.id.button);
-
+        button2 = (Button) findViewById(R.id.button2);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
             if(ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
@@ -47,6 +47,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         enable_button();
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void enable_button() {
@@ -103,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                             .build();
 
                     Request request = new Request.Builder()
-                            .url("URL_TO_THE_SERVER/YOUR_SCRIPT.php")
+                            .url("https://www.sleefax.com/test/upload.php")
                             .post(request_body)
                             .build();
 
